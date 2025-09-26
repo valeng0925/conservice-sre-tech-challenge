@@ -1,0 +1,30 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and customize the values
+
+# AWS Configuration
+aws_region = "us-east-2"
+environment = "dev"
+project_name = "conservice-billing"
+
+# VPC Configuration
+vpc_cidr = "10.0.0.0/16"
+availability_zones = ["us-east-2a", "us-east-2b", "us-east-2c"]
+
+# EKS Configuration
+cluster_name = "conservice-billing-cluster"
+node_group_instance_types = ["t3.small"]
+node_group_desired_size = 1
+node_group_max_size = 4
+node_group_min_size = 1
+
+# RDS Configuration
+db_instance_class = "db.t3.micro"
+db_allocated_storage = 20
+db_max_allocated_storage = 100
+
+# OpenSearch Configuration
+opensearch_instance_type = "t3.small.search"
+opensearch_instance_count = 1
+
+# ECR Repositories
+ecr_repositories = ["billing-backend", "billing-frontend"]
