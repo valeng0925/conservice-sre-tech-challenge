@@ -88,7 +88,7 @@ resource "aws_kms_alias" "opensearch_logs" {
 
 # Store OpenSearch credentials in Secrets Manager
 resource "aws_secretsmanager_secret" "opensearch_credentials" {
-  name                    = "${local.name_prefix}-opensearch-credentials"
+  name                    = "${local.name_prefix}-opensearch-credentials-v2"
   description             = "OpenSearch credentials for billing service"
   recovery_window_in_days = 7
 

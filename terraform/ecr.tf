@@ -6,6 +6,7 @@ resource "aws_ecr_repository" "repos" {
   
   name                 = each.value
   image_tag_mutability   = "MUTABLE"
+  force_delete         = true
   image_scanning_configuration {
     scan_on_push = true
   }
@@ -30,12 +31,12 @@ resource "aws_ecr_lifecycle_policy" "repos" {
     rules = [
       {
         rulePriority = 1
-        description  = "Keep last 10 images"
+        description  = "Keep last 5 versioned images"
         selection = {
           tagStatus     = "tagged"
           tagPrefixList = ["v"]
           countType     = "imageCountMoreThan"
-          countNumber   = 10
+          countNumber   = 5
         }
         action = {
           type = "expire"
@@ -49,6 +50,20 @@ resource "aws_ecr_lifecycle_policy" "repos" {
           countType   = "sinceImagePushed"
           countUnit   = "days"
           countNumber = 1
+        }
+        action = {
+          type = "expire"
+        }
+      },
+      {
+        rulePriority = 3
+        description  = "Delete non-versioned tagged images older than 7 days"
+        selection = {
+          tagStatus     = "tagged"
+          tagPrefixList = ["latest", "main", "dev"]
+          countType     = "sinceImagePushed"
+          countUnit     = "days"
+          countNumber   = 7
         }
         action = {
           type = "expire"

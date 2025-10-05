@@ -85,7 +85,7 @@ resource "random_password" "documentdb_password" {
 
 # Store DocumentDB credentials in Secrets Manager
 resource "aws_secretsmanager_secret" "documentdb_credentials" {
-  name                    = "${local.name_prefix}-documentdb-credentials"
+  name                    = "${local.name_prefix}-documentdb-credentials-v2"
   description             = "DocumentDB credentials for billing service"
   recovery_window_in_days = 7
 

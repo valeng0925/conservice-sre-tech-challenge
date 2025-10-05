@@ -1,0 +1,110 @@
+# Default values for cluster-autoscaler
+# This is a YAML-formatted file.
+
+# Cluster Autoscaler configuration
+clusterName: "conservice-billing-cluster"
+awsRegion: "us-east-2"
+
+# Image configuration
+image:
+  repository: "k8s.gcr.io/autoscaling/cluster-autoscaler"
+  tag: "v1.31.0"
+  pullPolicy: "IfNotPresent"
+
+# Service account configuration
+serviceAccount:
+  create: true
+  name: "cluster-autoscaler"
+  annotations: {}
+
+# RBAC configuration
+rbac:
+  create: true
+
+# Pod configuration
+podAnnotations: {}
+podLabels: {}
+
+# Resource configuration
+resources:
+  limits:
+    cpu: 100m
+    memory: 300Mi
+  requests:
+    cpu: 100m
+    memory: 300Mi
+
+# Node selector
+nodeSelector: {}
+
+# Tolerations
+tolerations: []
+
+# Affinity
+affinity: {}
+
+# Pod security context
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 65534
+  fsGroup: 65534
+
+# Container security context
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 65534
+
+# Autoscaler configuration
+autoscaler:
+  # Minimum number of nodes
+  minNodes: 1
+  
+  # Maximum number of nodes
+  maxNodes: 10
+  
+  # Scale down delay after a node becomes unneeded
+  scaleDownDelayAfterAdd: "10m"
+  
+  # Scale down delay after a node becomes unneeded
+  scaleDownUnneededTime: "10m"
+  
+  # Scale down delay after a node becomes unneeded
+  scaleDownUtilizationThreshold: "0.5"
+  
+  # Skip nodes with local storage
+  skipNodesWithLocalStorage: false
+  
+  # Skip nodes with system pods
+  skipNodesWithSystemPods: true
+  
+  # Skip nodes with custom resource
+  skipNodesWithCustomResource: false
+  
+  # Skip nodes with DaemonSet pods
+  skipNodesWithDaemonSetPods: false
+  
+  # Skip nodes with local storage
+  skipNodesWithLocalStorage: false
+  
+  # Skip nodes with system pods
+  skipNodesWithSystemPods: true
+  
+  # Skip nodes with custom resource
+  skipNodesWithCustomResource: false
+  
+  # Skip nodes with DaemonSet pods
+  skipNodesWithDaemonSetPods: false
+  
+  # Skip nodes with local storage
+  skipNodesWithLocalStorage: false
+  
+  # Skip nodes with system pods
+  skipNodesWithSystemPods: true
+  
+  # Skip nodes with custom resource
+  skipNodesWithCustomResource: false
+  
+  # Skip nodes with DaemonSet pods
+  skipNodesWithDaemonSetPods: false

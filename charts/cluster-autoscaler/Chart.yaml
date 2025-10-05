@@ -1,0 +1,17 @@
+apiVersion: v2
+name: cluster-autoscaler
+description: A Helm chart for AWS Cluster Autoscaler
+type: application
+version: 0.1.0
+appVersion: "1.31"
+keywords:
+  - autoscaling
+  - cluster-autoscaler
+  - aws
+  - eks
+home: https://github.com/kubernetes/autoscaler
+sources:
+  - https://github.com/kubernetes/autoscaler
+maintainers:
+  - name: SRE Team
+    email: sre@conservice.com
