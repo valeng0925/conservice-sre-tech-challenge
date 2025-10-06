@@ -14,6 +14,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: frontend
+                name: billing-frontend
                 port:
                   number: 3001
